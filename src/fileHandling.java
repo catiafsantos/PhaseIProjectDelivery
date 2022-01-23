@@ -8,15 +8,17 @@ import java.nio.file.Paths;
 
 public class fileHandling {
 
-    static void createFile(String filename) throws IOException {
+    static void createFile(String fileName) throws IOException {
         // Create new file
-        File file = new File("DIRECTORY/$filename.txt");
+        String path = "FileDirectory/" + fileName;
+        System.out.println(path);
+        File file = new File(path);
 
         try{
             file.createNewFile();
-            System.out.println("The file: "+ filename +" was created with success.");
+            System.out.println("The file: "+ fileName +" was created with success.");
         } catch (FileAlreadyExistsException e) {
-            System.out.println("The mentioned file: "+ filename +" already exists in this directory, and will therefore, not be created.");
+            System.out.println("The mentioned file: "+ fileName +" already exists in this directory, and will therefore, not be created.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,22 +29,26 @@ public class fileHandling {
         writer.close();
     }
 
-    // Method to delete file per filename
-    static void deleteFile(String filename) throws IOException {
+    // Method to delete file per fileName
+    static void deleteFile(String fileName) throws IOException {
+        String path = "FileDirectory/" + fileName;
         try {
-            Files.delete(Paths.get("DIRECTORY/$filename.txt"));
+            Files.delete(Paths.get(path));
+            System.out.println("The mentioned file: "+ fileName +" was deleted successfully.");
         }  catch (NoSuchFileException e) {
-            System.out.println("The mentioned file was not found.");
+            System.out.println("The mentioned file was not found. The application will exit now.");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("The mentioned file: "+ filename +" was deleted successfully.");
     }
 
-    // Method to read file per filename
-    static void readFile(String filename) throws IOException {
+    // Method to read file per fileName
+    static void readFile(String fileName) throws IOException {
+        String path = "FileDirectory/" + fileName;
         try {
-            System.out.println(Files.readAllLines(Paths.get("DIRECTORY/$filename.txt")));
+            System.out.println(Files.readAllLines(Paths.get(path)));
+        }  catch (NoSuchFileException e) {
+            System.out.println("The mentioned file was not found. The application will exit now.");
         } catch (IOException e) {
             e.printStackTrace();
         }
