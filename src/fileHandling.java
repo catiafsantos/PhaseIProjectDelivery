@@ -14,24 +14,25 @@ public class fileHandling {
         System.out.println(path);
         File file = new File(path);
 
-        try{
+        try { if (!file.exists()){
             file.createNewFile();
             System.out.println("The file: "+ fileName +" was created with success.");
-        } catch (FileAlreadyExistsException e) {
+        } else {
             System.out.println("The mentioned file: "+ fileName +" already exists in this directory, and will therefore, not be created.");
-        } catch (IOException e) {
+        } } catch (IOException e) {
             e.printStackTrace();
         }
 
         // Write info on the created file
         FileWriter writer = new FileWriter(file);
-        writer.write("Hello, this is me writing on the file using the createFile Method!");
+        writer.write("Hello, this is me writing on the file: "+ fileName +"  using the createFile() method!");
         writer.close();
     }
 
     // Method to delete file per fileName
-    static void deleteFile(String fileName) throws IOException {
+    static void deleteFile(String fileName) {
         String path = "FileDirectory/" + fileName;
+
         try {
             Files.delete(Paths.get(path));
             System.out.println("The mentioned file: "+ fileName +" was deleted successfully.");
@@ -43,7 +44,7 @@ public class fileHandling {
     }
 
     // Method to read file per fileName
-    static void readFile(String fileName) throws IOException {
+    static void readFile(String fileName) {
         String path = "FileDirectory/" + fileName;
         try {
             System.out.println(Files.readAllLines(Paths.get(path)));
@@ -55,7 +56,7 @@ public class fileHandling {
     }
 
     // Method to order files per ASC order
-    static void orderFiles() throws IOException{
+    static void orderFiles() {
         System.out.println("You've reached the orderFiles() method.This is not implemented yet.");
     }
 }

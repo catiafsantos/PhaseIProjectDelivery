@@ -54,7 +54,7 @@ public class mainMenu {
                 break;
             case "4":
                 System.out.println("Option 3 was chosen. You will be sent back into the previous Menu.");;
-                new mainMenu();
+                main(null);
                 break;    
             default:
                 System.out.println("That is not a valid option. The application will exit now.");
