@@ -1,17 +1,16 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class fileHandling {
 
     static void createFile(String fileName) throws IOException {
         // Create new file
         String path = "FileDirectory/" + fileName;
-        System.out.println(path);
         File file = new File(path);
 
         try { if (!file.exists()){
@@ -25,7 +24,7 @@ public class fileHandling {
 
         // Write info on the created file
         FileWriter writer = new FileWriter(file);
-        writer.write("Hello, this is me writing on the file: "+ fileName +"  using the createFile() method!");
+        writer.write("Hello, this is me writing on the file: "+ fileName +" using the createFile() method!");
         writer.close();
     }
 
@@ -34,7 +33,7 @@ public class fileHandling {
         String path = "FileDirectory/" + fileName;
 
         try {
-            Files.delete(Paths.get(path));
+            Files.deleteIfExists(Paths.get(path));
             System.out.println("The mentioned file: "+ fileName +" was deleted successfully.");
         }  catch (NoSuchFileException e) {
             System.out.println("The mentioned file was not found. The application will exit now.");
@@ -57,6 +56,13 @@ public class fileHandling {
 
     // Method to order files per ASC order
     static void orderFiles() {
-        System.out.println("You've reached the orderFiles() method.This is not implemented yet.");
+        try {
+            Files.list(Paths.get("FileDirectory/"))
+                    .sorted()
+                    .forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
