@@ -16,11 +16,11 @@ public class mainMenu {
                 fileHandling.orderFiles();
                 break;
             case "2":
-                System.out.println("Option 2 was chosen. Extra Options to file handling will be presented.Please choose one of the following options:");;
+                System.out.println("Option 2 was chosen. Extra Options to file handling will be presented.Please choose one of the following options:");
                 extraMenuOptions();
                 break;
             case "3":
-                System.out.println("Option 3 was chosen. The app is going to close.\nThank you for using it!");;
+                System.out.println("Option 3 was chosen. The app is going to close.\nThank you for using it!");
                 break;
             default:
                 System.out.println("That is not a valid option. The application will exit now.");
@@ -38,22 +38,22 @@ public class mainMenu {
 
         switch (secondUserInput.toLowerCase()){
             case "1":
-                System.out.println("Option 1 was chosen, a new file will be created. Please enter the fileName: ");;
+                System.out.println("Option 1 was chosen, a new file will be created. Please enter the fileName: ");
                 fileName = sc.next() + ".txt";
                 fileHandling.createFile(fileName.toLowerCase());
                 break;
             case "2":
-                System.out.println("Option 2 was chosen, the chosen file will be deleted. Please enter the fileName: ");;
+                System.out.println("Option 2 was chosen, the chosen file will be deleted. Please enter the fileName: ");
                 fileName = sc.next() + ".txt";
                 fileHandling.deleteFile(fileName);
                 break;
             case "3":
-                System.out.println("Option 3 was chosen, the chosen file will be read. Please enter the fileName: ");;
+                System.out.println("Option 3 was chosen, the chosen file will be read. Please enter the fileName: ");
                 fileName = sc.next() + ".txt";
                 fileHandling.readFile(fileName);
                 break;
             case "4":
-                System.out.println("Option 3 was chosen. You will be sent back into the previous Menu.");;
+                System.out.println("Option 4 was chosen. You will be sent back into the previous Menu.");
                 main(null);
                 break;    
             default:
